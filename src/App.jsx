@@ -3,7 +3,7 @@ import chatBotStart from './Components/chatBotStart'
 
 function App() {
   return (
-    <div>chatBotStart</div>
+    <div className='container'>chatBotStart</div>
   )
 }
 

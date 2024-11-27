@@ -1,8 +1,11 @@
 import React from 'react'
+import './chatBotStart.css'
 
 const chatBotStart = () => {
   return (
-    <div>chatBotStart</div>
+    <div className='startPage'>
+        <button className='startButton'>Start Chatting</button>
+    </div>
   )
 }
 
