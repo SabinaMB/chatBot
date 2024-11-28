@@ -1,5 +1,5 @@
 .chatApp {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
 }
@@ -29,9 +29,9 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0.5rem;
     cursor: pointer;
-    /* background-color: #081323; */
     background-color: #0d1f3a;
     border-radius: 0.5rem;
 }
@@ -47,6 +47,7 @@
 
 .newChat {
     margin-left: clamp(0.2rem, 1vh, 1rem);
+    color: #f90784;
 }
 
 h3 {
@@ -83,14 +84,25 @@ h5 {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-.arrow {
-    font-size: 2rem;
-    font-weight: 600;
-    transform: rotate(180deg);
+
+.home {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
     cursor: pointer;
-    margin-left: 1rem;
+    font-size: 1.2rem;
     color:  #f90784;
+}
+
+.home:hover {
+    transform: scale(1.1);
 }
 
 .chat {

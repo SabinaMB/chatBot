@@ -1,7 +1,7 @@
 import React from 'react'
 import './ChatBotApp.css'
 
-const ChatBotApp = () => {
+const ChatBotApp = ({onGoBack}) => {
   return (
     <div className='chatApp'>
         <div className='chatList'>
@@ -25,7 +25,10 @@ const ChatBotApp = () => {
         <div className='chatWindow'>
             <div className='chatTitle'>
                 <h3>Ask the Bot</h3>
-                <i className='bx bx-arrow-back arrow'></i>
+                {/* <i className='bx bx-arrow-back arrow'></i> */}
+                <button className='home' onClick={onGoBack}>
+                <i className='fa-solid fa-home'></i>
+                </button>
             </div>
             <div className='chat'>
                 <div className='prompt'>
