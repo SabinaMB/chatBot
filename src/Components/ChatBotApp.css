@@ -1,0 +1,62 @@
+.chatApp {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.chatList {
+    width: 30%;
+    height: 100%;
+    background-color: #030b17;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    color: #D3D3D3;
+}
+
+.chatListHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.chatListItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    background-color: #081323;
+}
+
+.x {
+    margin-left: clamp(0.2rem, 1.5vw, 1rem);
+}
+
+.chatListItem.active {
+    background:#58A6FF;
+    color:#030b17;
+}
+
+.newChat {
+    margin-left: clamp(0.2rem, 1vh, 1rem);
+}
+
+h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 2vw, 2rem);   
+}
+
+h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);   
+}
+
+h5 {
+    font-family: 'exo 2', sans-serif;
+    font-size: clamp(0.8rem, 1vw, 1rem);   
+}

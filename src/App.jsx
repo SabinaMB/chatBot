@@ -1,5 +1,5 @@
 import React from 'react'
-import ChatBotStart from './Components/ChatBotStart'
+import ChatBotStart from './Components/chatBotStart'
 import ChatBotApp from './Components/ChatBotApp'
 
 function App() {
