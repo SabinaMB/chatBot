@@ -1,6 +1,6 @@
 import React from 'react'
 import './chatBotStart.css'
-import botImage from '../assets/bot4.png'
+import botImage from '../assets/bot6.png'
 
 
 const chatBotStart = () => {

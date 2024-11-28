@@ -10,23 +10,22 @@
 
 .startButton {
     width: clamp(15rem, 20vw, 20rem);
-    height: 5rem;
-    font-size:3rem;
+    height: clamp(3rem, 8vh, 5rem);
+    font-size:2rem;
     background-color:rgba(21, 21, 232, 0.779);
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 2rem;
     font-weight: 600;
     color: #D3D3D3;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.15rem;
     text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
     transition: transform 0.1s ease;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .startButton:active {
@@ -34,7 +33,8 @@
 }
 
 .botImage {
-    width: clamp(15rem, 20vh, 20rem);
+    width: clamp(15rem, 20vh, 25rem);
     height: auto;
     object-fit: contain;
+    border-radius: 50%;
 }
