@@ -3,11 +3,11 @@ import './ChatBotStart.css'
 import botImage from '../assets/bot6.png'
 
 
-const chatBotStart = () => {
+const chatBotStart = ({onStartChat}) => {
   return (
     <div className='startPage'>
         <img src={botImage} alt='bot' className='botImage'/>
-        <button className='startButton'>Let's chat</button>
+        <button className='startButton' onClick={onStartChat}>Let's chat</button>
     </div>
   )
 }
