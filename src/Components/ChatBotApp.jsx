@@ -11,21 +11,21 @@ const ChatBotApp = () => {
             </div>
             <div className='chatListItem active'>
                 <h5>Chat 20/11/24 1:54:23 pm</h5>
-                <i className='bx bx-x x'></i>
+                <i className='bx bx-x-circle x'></i>
             </div>
             <div className='chatListItem'>
                 <h5>Chat 20/11/24 1:54:23 pm</h5>
-                <i className='bx bx-x x'></i>
+                <i className='bx bx-x-circle x'></i>
             </div>
             <div className='chatListItem'>
                 <h5>Chat 20/11/24 1:54:23 pm</h5>
-                <i className='bx bx-x x'></i>
+                <i className='bx bx-x-circle x'></i>
             </div>
         </div>
         <div className='chatWindow'>
             <div className='chatTitle'>
-                <h3>Chat with Bot</h3>
-                <i className='bx-bx-arrow-back arrow'></i>
+                <h3>Ask the Bot</h3>
+                <i className='bx bx-arrow-back arrow'></i>
             </div>
             <div className='chat'>
                 <div className='prompt'>
@@ -36,7 +36,7 @@ const ChatBotApp = () => {
                 </div>
                 <div className='typing'>Typing...</div>
                 <form className='msgForm'>
-                    <i className='fa-solid fa-face smile emoji'></i>
+                    <i className='fa-solid fa-face-smile emoji'></i>
                     <input type='text' className='msgInput' placeholder='Type a message' />
                     <i className='fa-solid fa-paper-plane'></i>
                 </form>
