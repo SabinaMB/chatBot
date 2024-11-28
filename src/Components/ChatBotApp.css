@@ -156,6 +156,7 @@ h5 {
     font-size: 2rem;
     color: #f90784;
     cursor: pointer;
+    padding: 2rem;
 }
 
 .msgInput {
@@ -167,10 +168,7 @@ h5 {
     font-size: clamp(1rem, 1vw, 1.5rem);
     line-height: 1.5;
     padding: 0.5rem;
-    overflow-wrap: break-word; /* Breaks long words */
-    word-wrap: break-word; /* Legacy support */
-    word-break: break-word;
-    resize: none; 
+     
 }
 
 .msgInput::placeholder {
