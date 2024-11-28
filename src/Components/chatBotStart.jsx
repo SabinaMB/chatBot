@@ -1,5 +1,5 @@
 import React from 'react'
-import './chatBotStart.css'
+import './ChatBotStart.css'
 import botImage from '../assets/bot6.png'
 
 
