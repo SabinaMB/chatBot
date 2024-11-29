@@ -1,7 +1,27 @@
 import React from 'react'
 import './ChatBotApp.css'
 
-const ChatBotApp = ({onGoBack}) => {
+const ChatBotApp = ({onGoBack, chats, setChats}) => {
+    const[inputValue, setInputValue] = useState('')
+    const[messages, setMessages] = useState(chats[0]?.messages || [])
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
+    }
+    const sendMessage = () => {
+        if(inputValue.trim === '') return
+
+        const newMessage = {
+            type: 'prompt',
+            text: inputValue,
+            timestamp: new Date().toLocaleTimeString()
+        }
+
+        const updateMessages = [...messages, newMessage]
+        setMessages(updateMessages)
+        setInputValue('')
+    }
+
+
   return (
     <div className='chatApp'>
         <div className='chatList'>

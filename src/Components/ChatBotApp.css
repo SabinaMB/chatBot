@@ -48,6 +48,7 @@
 .newChat {
     margin-left: clamp(0.2rem, 1vh, 1rem);
     color: #f90784;
+    cursor: pointer;
 }
 
 h3 {
