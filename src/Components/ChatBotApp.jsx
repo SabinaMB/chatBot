@@ -46,7 +46,7 @@ const ChatBotApp = ({ onGoBack, chats, setChats }) => {
         {chats.map((chat, index) => (
             <div key={index} className={`chatListItem ${index === 0 ? 'active' : ''}`}>
              <h5>
-             {`${new Date().toLocaleDateString("de-DE")} ${new Date().toLocaleTimeString()}`}
+             Chat {`${new Date().toLocaleDateString("de-DE")} ${new Date().toLocaleTimeString()}`}
              </h5>
 
             <i className="bx bx-x-circle x"></i>
@@ -63,13 +63,13 @@ const ChatBotApp = ({ onGoBack, chats, setChats }) => {
           </button>
         </div>
         <div className="chat">
-          <div className="prompt">
-            Hi, how are you? How can I help you today? <span>12:59:51 PM</span>
-          </div>
-          <div className="response">
-            I am fine, thank you. <span>12:59:51 PM</span>
-          </div>
+          {messages.map((msg,index) => (
+            <div key={index} className={msg.type === 'prompt' ? 'prompt' : 'response'}>
+              {msg.text} <span>{msg.timestamp}</span>
+            </div>
+          ))}
           <div className="typing">Typing...</div>
+        </div>
           <form
             className="msgForm"
             onSubmit={(e) => {
@@ -81,7 +81,7 @@ const ChatBotApp = ({ onGoBack, chats, setChats }) => {
             <input
               type="text"
               className="msgInput"
-              placeholder="Type a message"
+              placeholder="Type a message..."
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -89,7 +89,6 @@ const ChatBotApp = ({ onGoBack, chats, setChats }) => {
           </form>
         </div>
       </div>
-    </div>
   );
 };
 
