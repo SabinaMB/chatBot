@@ -20,7 +20,7 @@ const App = () => {
     setIsChatting(false);
   };
 
-  const createNewChat = () => {
+  const createNewChat = (initialMessage = "") => {
     const now = new Date();
     const formattedDate = now.toLocaleDateString("de-DE");
     const formattedTime = now.toLocaleTimeString();
@@ -28,7 +28,16 @@ const App = () => {
     const newChat = {
       id: uuidv4(),
       displayId: `Chat ${formattedDate} ${formattedTime}`,
-      messages: [],
+      messages: initialMessage
+        ? [
+            {
+              type: "prompt",
+              text: initialMessage,
+              timestamp: formattedDate,
+              formattedTime,
+            },
+          ]
+        : [],
     };
 
     // setChats((prevChats) => [...prevChats, newChat]);
