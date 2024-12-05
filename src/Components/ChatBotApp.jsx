@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import "./ChatBotApp.css";
 
 const ChatBotApp = ({
@@ -30,17 +30,22 @@ const ChatBotApp = ({
       timestamp: new Date().toLocaleTimeString(),
     };
 
-    const updateMessages = [...messages, newMessage];
-    setMessages(updateMessages);
-    setInputValue("");
+    if (!activeChat) {
+      onNewChat(inputValue);
+      setInputValue("");
+    } else {
+      const updateMessages = [...messages, newMessage];
+      setMessages(updateMessages);
+      setInputValue("");
 
-    const updatedChats = chats.map((chat) => {
-      if (chat.id === activeChat) {
-        return { ...chat, messages: updateMessages };
-      }
-      return chat;
-    });
-    setChats(updatedChats);
+      const updatedChats = chats.map((chat) => {
+        if (chat.id === activeChat) {
+          return { ...chat, messages: updateMessages };
+        }
+        return chat;
+      });
+      setChats(updatedChats);
+    }
   };
 
   const handleSelectChat = (id) => {
