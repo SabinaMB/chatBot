@@ -1,195 +1,202 @@
 .chatApp {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
 }
 
 .chatList {
-    width: 30%;
-    height: 100%;
-    background-color: #030b17;
-    overflow-y: auto;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.5rem;
-    color: #D3D3D3;
+  width: 30%;
+  height: 100%;
+  background-color: #030b17;
+  overflow: hidden;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  color: #d3d3d3;
 }
 
 .chatListHeader {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem;
-    margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin-top: 1rem;
 }
 
 .chatListItem {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem;
-    cursor: pointer;
-    background-color: #0d1f3a;
-    border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #0d1f3a;
+  border-radius: 0.5rem;
 }
 
 .x {
-    margin-left: clamp(0.2rem, 1.5vw, 1rem);
-    color: #f90784
+  margin-left: clamp(0.2rem, 1.5vw, 1rem);
+  color: #f90784;
 }
 
 .chatListItem.active {
-    background: rgba(21, 21, 232, 0.779);
+  background: rgba(21, 21, 232, 0.779);
 }
 
 .newChat {
-    margin-left: clamp(0.2rem, 1vh, 1rem);
-    color: #f90784;
-    cursor: pointer;
+  margin-left: clamp(0.2rem, 1vh, 1rem);
+  color: #f90784;
+  cursor: pointer;
 }
 
 h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.15rem;
-    font-size: clamp(1.5rem, 2vw, 2rem);   
-    text-transform: uppercase;
-    color: #D3D3D3;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  text-transform: uppercase;
+  color: #d3d3d3;
 }
 
 h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);  
-    text-transform: uppercase; 
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  text-transform: uppercase;
 }
 
 h5 {
-    font-family: 'exo 2', sans-serif;
-    font-size: clamp(0.8rem, 1vw, 1rem);   
+  font-family: "exo 2", sans-serif;
+  font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 .chatWindow {
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    row-gap: 0.5rem;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  row-gap: 0.5rem;
+  overflow-y: auto;
+  /* overflow-x: hidden; */
+  flex-grow: 1;
 }
 
-.chatTitle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.chatWindow::-webkit-scrollbar {
+  width: 0;
+}
+
+c .chatTitle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .home {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color:  #f90784;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #f90784;
 }
 
 .home:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .chat {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 2rem;
-    padding: 1rem;
-    flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 1rem;
+  flex-grow: 1;
 }
 
 .prompt,
 .response {
-    max-width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .prompt {
-    align-self: flex-end;
-    background-color: #58A6FF;
-    border-radius: 3rem 0 3rem 3rem;
+  align-self: flex-end;
+  background-color: #58a6ff;
+  border-radius: 3rem 0 3rem 3rem;
 }
 
 .response {
-   
-    align-self: flex-start;
-    background-color: rgba(21, 21, 232, 0.779);
-    border-radius: 0 3rem 3rem 3rem;
-    color: #D3D3D3;
+  align-self: flex-start;
+  background-color: rgba(21, 21, 232, 0.779);
+  border-radius: 0 3rem 3rem 3rem;
+  color: #d3d3d3;
 }
 
 .prompt span,
 .response span {
-    font-family: 'exo 2', sans-serif;
-    font-size: clamp(0.8rem, 1vw, 1rem);   
-    display: block;
-    margin-top: 0.5rem;
-    align-self: flex-end;
+  font-family: "exo 2", sans-serif;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  display: block;
+  margin-top: 0.5rem;
+  align-self: flex-end;
 }
 
 .typing {
-    color:darkgrey;
-    margin-top: auto;
+  color: darkgrey;
+  margin-top: auto;
 }
 
 .msgForm {
-    width: 100%;
-    /* height: 5rem; */
-    display: flex;
-    align-items: center;
-    padding-right: 0.5rem;
-    gap: 1rem;
+  width: 100%;
+  /* min-height: 10rem; */
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+  gap: 1rem;
 }
 
-.msgForm i{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 2rem;
-    color: #f90784;
-    cursor: pointer;
-    padding: 2rem;
+.msgForm i {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  color: #f90784;
+  cursor: pointer;
+  padding: 2rem;
 }
 
 .msgInput {
-    height: 100%;
-    flex-grow: 1;
-    background-color: transparent;
-    border: none;
-    color: #D3D3D3;
-    font-size: clamp(1rem, 1vw, 1.5rem);
-    line-height: 1.5;
-    padding: 0.5rem;
-     
+  height: 100%;
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: #d3d3d3;
+  font-size: clamp(1rem, 1vw, 1.5rem);
+  line-height: 1.5;
+  padding: 0.5rem;
+  overflow-y: hidden;
 }
 
 .msgInput::placeholder {
-    color: #D3D3D3;
-    font-size: clamp(1rem, 1vw, 1.5rem);
-    line-height: 1.5;
+  color: #d3d3d3;
+  font-size: clamp(1rem, 1vw, 1.5rem);
+  line-height: 1.5;
 }
 
 .msgInput:focus::placeholder {
-    opacity: 0;
+  opacity: 0;
 }

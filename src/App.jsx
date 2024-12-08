@@ -40,9 +40,6 @@ const App = () => {
         : [],
     };
 
-    // setChats((prevChats) => [...prevChats, newChat]);
-    // setActiveChat(newChat.id);
-
     const updatedChats = [...chats, newChat];
     setChats(updatedChats);
     setActiveChat(newChat.id);
