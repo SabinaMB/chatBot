@@ -23,7 +23,18 @@ const ChatBotApp = ({
   }, [activeChat, chats]);
 
   const handleEmojiSelect = (emoji) => {
-    setInputValue((prevInput) => prevInput + emoji.native);
+    const input = document.querySelector(".msgInput");
+    const cursorPos = input.selectionStart;
+    const textBeforeCursor = inputValue.slice(0, cursorPos);
+    const textAfterCursor = inputValue.slice(cursorPos);
+
+    const newText = textBeforeCursor + emoji.native + textAfterCursor;
+    setInputValue(newText);
+
+    setTimeout(() => {
+      input.selectionStart = cursorPos + emoji.native.length;
+      input.selectionEnd = cursorPos + emoji.native.length;
+    }, 0);
   };
 
   const handleInputChange = (e) => {
@@ -186,14 +197,21 @@ const ChatBotApp = ({
             </div>
           )}
 
-          <input
-            type="text"
+          <textarea
             className="msgInput"
             placeholder="Type a message..."
             value={inputValue}
             onChange={handleInputChange}
             onFocus={() => setShowEmojiPicker(false)}
-          />
+            rows="2"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+              }
+            }}
+          ></textarea>
+
           <i className="fa-solid fa-paper-plane" onClick={sendMessage}></i>
         </form>
       </div>
