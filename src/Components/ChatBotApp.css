@@ -167,6 +167,7 @@ c .chatTitle {
   align-items: center;
   padding-right: 0.5rem;
   gap: 1rem;
+  position: relative;
 }
 
 .msgForm i {
@@ -199,4 +200,18 @@ c .chatTitle {
 
 .msgInput:focus::placeholder {
   opacity: 0;
+}
+
+.picker {
+  position: absolute;
+  bottom: 5rem;
+  left: 0.5rem;
+
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .picker {
+    max-width: 15rem;
+  }
 }
