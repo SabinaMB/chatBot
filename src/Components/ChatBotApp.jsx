@@ -17,10 +17,24 @@ const ChatBotApp = ({
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const chatEndRef = useRef(null);
 
+  // useEffect(() => {
+  //   if (activeChat) {
+  //     const storedMessages = JSON.parse(localStorage.getItem(activeChat)) || [];
+  //     setMessages(storedMessages);
+  //   }
+  // }, [activeChat]);
+
   useEffect(() => {
     const activeChatObj = chats.find((chat) => chat.id === activeChat);
     setMessages(activeChatObj ? activeChatObj.messages : []);
   }, [activeChat, chats]);
+
+  useEffect(() => {
+    if (activeChat) {
+      const storedMessages = JSON.parse(localStorage.getItem(activeChat)) || [];
+      setMessages(storedMessages);
+    }
+  }, [activeChat]);
 
   const handleEmojiSelect = (emoji) => {
     const input = document.querySelector(".msgInput");
@@ -56,6 +70,7 @@ const ChatBotApp = ({
     } else {
       const updateMessages = [...messages, newMessage];
       setMessages(updateMessages);
+      localStorage.setItem(activeChat, JSON.stringify(updateMessages));
       setInputValue("");
 
       const updatedChats = chats.map((chat) => {
@@ -65,6 +80,7 @@ const ChatBotApp = ({
         return chat;
       });
       setChats(updatedChats);
+      localStorage.setItem("chats", JSON.stringify(updatedChats));
       setIsTyping(true);
 
       const response = await fetch(
@@ -91,8 +107,12 @@ const ChatBotApp = ({
         timestamp: new Date().toLocaleTimeString(),
       };
 
-      const updatesMessagesWithResponse = [...updateMessages, newResponse];
-      setMessages(updatesMessagesWithResponse);
+      const updatedMessagesWithResponse = [...updateMessages, newResponse];
+      setMessages(updatedMessagesWithResponse);
+      localStorage.setItem(
+        activeChat,
+        JSON.stringify(updatedMessagesWithResponse)
+      );
       setIsTyping(false);
 
       const updatedChatsWithResponse = chats.map((chat) => {
@@ -102,6 +122,7 @@ const ChatBotApp = ({
         return chat;
       });
       setChats(updatedChatsWithResponse);
+      localStorage.setItem("chats", JSON.stringify(updatedChatsWithResponse));
     }
   };
 
@@ -112,6 +133,8 @@ const ChatBotApp = ({
   const handleDeleteChat = (id) => {
     const updatedChats = chats.filter((chat) => chat.id !== id);
     setChats(updatedChats);
+    localStorage.setItem("chats", JSON.stringify(updatedChats));
+    localStorage.removeItem(id);
 
     if (id === activeChat) {
       const newActiveChats =
