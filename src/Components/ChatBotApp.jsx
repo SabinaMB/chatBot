@@ -17,13 +17,6 @@ const ChatBotApp = ({
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const chatEndRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (activeChat) {
-  //     const storedMessages = JSON.parse(localStorage.getItem(activeChat)) || [];
-  //     setMessages(storedMessages);
-  //   }
-  // }, [activeChat]);
-
   useEffect(() => {
     const activeChatObj = chats.find((chat) => chat.id === activeChat);
     setMessages(activeChatObj ? activeChatObj.messages : []);
@@ -35,6 +28,23 @@ const ChatBotApp = ({
       setMessages(storedMessages);
     }
   }, [activeChat]);
+
+  useEffect(() => {
+    if (chats.length > 0) {
+      const lastChat = chats.reduce((latest, current) => {
+        const lastMessageTimeLatest = new Date(
+          latest.messages[latest.messages.length - 1]?.timestamp
+        ).getTime();
+        const lastMessageTimeCurrent = new Date(
+          current.messages[current.messages.length - 1]?.timestamp
+        ).getTime();
+        return lastMessageTimeLatest > lastMessageTimeCurrent
+          ? latest
+          : current;
+      });
+      setActiveChat(lastChat.id);
+    }
+  }, [chats, setActiveChat]);
 
   const handleEmojiSelect = (emoji) => {
     const input = document.querySelector(".msgInput");
@@ -117,7 +127,7 @@ const ChatBotApp = ({
 
       const updatedChatsWithResponse = chats.map((chat) => {
         if (chat.id === activeChat) {
-          return { ...chat, messages: updatesMessagesWithResponse };
+          return { ...chat, messages: updatedMessagesWithResponse };
         }
         return chat;
       });
@@ -147,6 +157,12 @@ const ChatBotApp = ({
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const sortedChats = [...chats].sort((a, b) => {
+    const lastMessageA = a.messages[a.messages.length - 1]?.timestamp;
+    const lastMessageB = b.messages[b.messages.length - 1]?.timestamp;
+    return new Date(lastMessageB) - new Date(lastMessageA);
+  });
+
   return (
     <div className="chatApp">
       <div className="chatList">
@@ -157,7 +173,8 @@ const ChatBotApp = ({
             onClick={() => onNewChat("New Chat")}
           ></i>
         </div>
-        {chats
+
+        {sortedChats
           .slice()
           .reverse()
           .map((chat) => (
