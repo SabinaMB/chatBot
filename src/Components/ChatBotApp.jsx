@@ -15,6 +15,7 @@ const ChatBotApp = ({
   const [messages, setMessages] = useState(chats[0]?.messages || []);
   const [isTyping, setIsTyping] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showChatList, setShowChatList] = useState(false);
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -165,12 +166,16 @@ const ChatBotApp = ({
 
   return (
     <div className="chatApp">
-      <div className="chatList">
+      <div className={`chatList ${showChatList ? "show" : ""}`}>
         <div className="chatListHeader">
           <h4>Chat List</h4>
           <i
             className="bx bx-edit-alt newChat"
             onClick={() => onNewChat("New Chat")}
+          ></i>
+          <i
+            className="bx bx-x-circle xMobile"
+            onClick={() => setShowChatList(false)}
           ></i>
         </div>
 
@@ -199,6 +204,10 @@ const ChatBotApp = ({
 
       <div className="chatWindow">
         <div className="chatTitle">
+          <i
+            className="bx bx-menu menu"
+            onClick={() => setShowChatList(true)}
+          ></i>
           <h3>Ask the Bot</h3>
           <button className="home" onClick={onGoBack}>
             <i className="fa-solid fa-home"></i>
