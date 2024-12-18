@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ChatBotStart from "./Components/chatBotStart";
 import ChatBotApp from "./Components/ChatBotApp";
 import { v4 as uuidv4 } from "uuid";
@@ -57,18 +58,36 @@ const App = () => {
 
   return (
     <div className="container">
-      {!isChatting ? (
-        <ChatBotStart onStartChat={handleStartChat} />
-      ) : (
-        <ChatBotApp
-          onGoBack={handleGoBack}
-          chats={chats}
-          setChats={setChats}
-          activeChat={activeChat}
-          setActiveChat={setActiveChat}
-          onNewChat={createNewChat}
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {!isChatting ? (
+          <motion.div
+            key="chatStart"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ChatBotStart onStartChat={handleStartChat} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="chatApp"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ChatBotApp
+              onGoBack={handleGoBack}
+              chats={chats}
+              setChats={setChats}
+              activeChat={activeChat}
+              setActiveChat={setActiveChat}
+              onNewChat={createNewChat}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
