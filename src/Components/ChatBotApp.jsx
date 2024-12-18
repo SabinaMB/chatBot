@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./ChatBotApp.css";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
+import { motion } from "framer-motion";
 
 const ChatBotApp = ({
   onGoBack,
@@ -17,6 +18,7 @@ const ChatBotApp = ({
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showChatList, setShowChatList] = useState(false);
   const chatEndRef = useRef(null);
+  const emojiPickerRef = useRef(null);
 
   useEffect(() => {
     const activeChatObj = chats.find((chat) => chat.id === activeChat);
@@ -46,6 +48,23 @@ const ChatBotApp = ({
       setActiveChat(lastChat.id);
     }
   }, [chats, setActiveChat]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(e.target) &&
+        !e.target.closest(".emoji")
+      ) {
+        setShowEmojiPicker(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const handleEmojiSelect = (emoji) => {
     const input = document.querySelector(".msgInput");
@@ -237,13 +256,20 @@ const ChatBotApp = ({
             onClick={() => setShowEmojiPicker((prev) => !prev)}
           ></i>
           {showEmojiPicker && (
-            <div className="picker">
+            <motion.div
+              ref={emojiPickerRef}
+              className="picker"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               <Picker
                 data={data}
                 onEmojiSelect={handleEmojiSelect}
                 theme="dark"
               />
-            </div>
+            </motion.div>
           )}
 
           <textarea
