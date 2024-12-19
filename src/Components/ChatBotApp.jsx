@@ -184,111 +184,113 @@ const ChatBotApp = ({
   });
 
   return (
-    <div className="chatApp">
-      <div className={`chatList ${showChatList ? "show" : ""}`}>
-        <div className="chatListHeader">
-          <h4>Chat List</h4>
-          <i
-            className="bx bx-edit-alt newChat"
-            onClick={() => onNewChat("New Chat")}
-          ></i>
-          <i
-            className="bx bx-x-circle xMobile"
-            onClick={() => setShowChatList(false)}
-          ></i>
+    <div className="limitedWidthContainer">
+      <div className="chatApp">
+        <div className={`chatList ${showChatList ? "show" : ""}`}>
+          <div className="chatListHeader">
+            <h4>Chat List</h4>
+            <i
+              className="bx bx-edit-alt newChat"
+              onClick={() => onNewChat("New Chat")}
+            ></i>
+            <i
+              className="bx bx-x-circle xMobile"
+              onClick={() => setShowChatList(false)}
+            ></i>
+          </div>
+
+          {sortedChats
+            .slice()
+            .reverse()
+            .map((chat) => (
+              <div
+                key={chat.id}
+                className={`chatListItem ${
+                  chat.id === activeChat ? "active" : ""
+                }`}
+                onClick={() => handleSelectChat(chat.id)}
+              >
+                <h5>{chat.displayId}</h5>
+                <i
+                  className="bx bx-x-circle x"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteChat(chat.id);
+                  }}
+                ></i>
+              </div>
+            ))}
         </div>
 
-        {sortedChats
-          .slice()
-          .reverse()
-          .map((chat) => (
-            <div
-              key={chat.id}
-              className={`chatListItem ${
-                chat.id === activeChat ? "active" : ""
-              }`}
-              onClick={() => handleSelectChat(chat.id)}
-            >
-              <h5>{chat.displayId}</h5>
-              <i
-                className="bx bx-x-circle x"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDeleteChat(chat.id);
-                }}
-              ></i>
-            </div>
-          ))}
-      </div>
-
-      <div className="chatWindow">
-        <div className="chatTitle">
-          <i
-            className="bx bx-menu menu"
-            onClick={() => setShowChatList(true)}
-          ></i>
-          <h3>Ask the Bot</h3>
-          <button className="home" onClick={onGoBack}>
-            <i className="fa-solid fa-home"></i>
-          </button>
-        </div>
-        <div className="chat">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={msg.type === "prompt" ? "prompt" : "response"}
-            >
-              {msg.text} <span>{msg.timestamp}</span>
-            </div>
-          ))}
-          {isTyping && <div className="response">Typing...</div>}
-          <div ref={chatEndRef}></div>
-        </div>
-        <form
-          className="msgForm"
-          onSubmit={(e) => {
-            e.preventDefault();
-            sendMessage();
-          }}
-        >
-          <i
-            className="fa-solid fa-face-smile emoji"
-            onClick={() => setShowEmojiPicker((prev) => !prev)}
-          ></i>
-          {showEmojiPicker && (
-            <motion.div
-              ref={emojiPickerRef}
-              className="picker"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <Picker
-                data={data}
-                onEmojiSelect={handleEmojiSelect}
-                theme="dark"
-              />
-            </motion.div>
-          )}
-
-          <textarea
-            className="msgInput"
-            placeholder="Type a message"
-            value={inputValue}
-            onChange={handleInputChange}
-            onFocus={() => setShowEmojiPicker(false)}
-            rows="2"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-              }
+        <div className="chatWindow">
+          <div className="chatTitle">
+            <i
+              className="bx bx-menu menu"
+              onClick={() => setShowChatList(true)}
+            ></i>
+            <h3>Ask the Bot</h3>
+            <button className="home" onClick={onGoBack}>
+              <i className="fa-solid fa-home"></i>
+            </button>
+          </div>
+          <div className="chat">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={msg.type === "prompt" ? "prompt" : "response"}
+              >
+                {msg.text} <span>{msg.timestamp}</span>
+              </div>
+            ))}
+            {isTyping && <div className="response">Typing...</div>}
+            <div ref={chatEndRef}></div>
+          </div>
+          <form
+            className="msgForm"
+            onSubmit={(e) => {
+              e.preventDefault();
+              sendMessage();
             }}
-          ></textarea>
+          >
+            <i
+              className="fa-solid fa-face-smile emoji"
+              onClick={() => setShowEmojiPicker((prev) => !prev)}
+            ></i>
+            {showEmojiPicker && (
+              <motion.div
+                ref={emojiPickerRef}
+                className="picker"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <Picker
+                  data={data}
+                  onEmojiSelect={handleEmojiSelect}
+                  theme="dark"
+                />
+              </motion.div>
+            )}
 
-          <i className="fa-solid fa-paper-plane" onClick={sendMessage}></i>
-        </form>
+            <textarea
+              className="msgInput"
+              placeholder="Type a message"
+              value={inputValue}
+              onChange={handleInputChange}
+              onFocus={() => setShowEmojiPicker(false)}
+              rows="2"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
+            ></textarea>
+
+            <i className="fa-solid fa-paper-plane" onClick={sendMessage}></i>
+          </form>
+        </div>
       </div>
     </div>
   );

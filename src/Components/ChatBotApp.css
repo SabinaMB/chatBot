@@ -176,7 +176,7 @@ c .chatTitle {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: clamp(1.5rem, 1.5vw, 1.8rem);
+  font-size: clamp(1.5rem, 1.5vw, 2rem);
   color: #f90784;
   cursor: pointer;
   padding: clamp(0.8rem, 1vw, 1rem);
