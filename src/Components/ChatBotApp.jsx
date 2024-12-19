@@ -274,7 +274,7 @@ const ChatBotApp = ({
 
           <textarea
             className="msgInput"
-            placeholder="Type a message..."
+            placeholder="Type a message"
             value={inputValue}
             onChange={handleInputChange}
             onFocus={() => setShowEmojiPicker(false)}
