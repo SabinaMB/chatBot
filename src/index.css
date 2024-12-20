@@ -17,5 +17,6 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #073260, #030b17);
+  background-color: #041c36;
+  /* background: linear-gradient(135deg, #073260, #030b17); */
 }

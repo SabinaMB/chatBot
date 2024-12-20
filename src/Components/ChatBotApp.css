@@ -1,23 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
 .chatApp {
   width: 100vw;
   height: 100vh;
   display: flex;
   overflow: hidden;
-  /* position: relative; */
+  background: linear-gradient(135deg, #073260 20%, #030b17 100%);
 }
 
 .chatList {
-  width: 25%;
-  max-height: 100%;
+  width: 30%;
+  height: 100%;
   background-color: #030b17;
   overflow: hidden;
   padding: clamp(0.3rem, 1vw, 0.5rem);
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   row-gap: clamp(0.5rem, 1vw, 1rem);
   color: #d3d3d3;
   transition: transform 0.4s ease;
+  overflow-y: auto;
+}
+
+.chatWindow {
+  width: 70%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: auto;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  row-gap: clamp(0.5rem, 1vw, 1rem);
   overflow-y: auto;
 }
 
@@ -77,22 +94,6 @@ h5 {
   font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
-.chatWindow {
-  width: 75%;
-  /* height: 100%; */
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: auto;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  row-gap: clamp(0.5rem, 1vw, 1rem);
-  overflow-y: auto;
-  /* overflow-x: hidden; */
-  flex-grow: 1;
-}
-
 .chatWindow::-webkit-scrollbar {
   width: 0;
 }
@@ -105,9 +106,10 @@ c .chatTitle {
 }
 
 .home {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 10;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -170,7 +172,6 @@ c .chatTitle {
 
 .msgForm {
   width: 100%;
-  /* min-height: 10rem; */
   display: flex;
   align-items: center;
   padding-right: 0.5rem;
@@ -281,5 +282,11 @@ c .chatTitle {
   .chatTitle i.menu,
   .xMobile {
     display: none;
+  }
+}
+
+@media (min-width: 1001px) {
+  .chatApp {
+    width: 1000px;
   }
 }

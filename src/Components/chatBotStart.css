@@ -1,40 +1,40 @@
 .startPage {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #073260 20%, #030b17 100%);
 }
 
 .startButton {
-    width: clamp(15rem, 20vw, 20rem);
-    height: clamp(3rem, 8vh, 5rem);
-    font-size:2rem;
-    background-color:rgba(21, 21, 232, 0.779);
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    color: #D3D3D3;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.15rem;
-    text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
-    transition: transform 0.1s ease;
-    margin-top: 3rem;
+  width: clamp(15rem, 20vw, 20rem);
+  height: clamp(3rem, 8vh, 5rem);
+  font-size: 2rem;
+  background-color: rgba(21, 21, 232, 0.779);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #d3d3d3;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+  margin-top: 3rem;
 }
 
 .startButton:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .botImage {
-    width: clamp(15rem, 20vh, 25rem);
-    height: auto;
-    object-fit: contain;
-    border-radius: 50%;
+  width: clamp(15rem, 20vh, 25rem);
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
 }
