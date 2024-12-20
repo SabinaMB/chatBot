@@ -107,7 +107,7 @@ c .chatTitle {
 
 .home {
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   right: 1rem;
   z-index: 10;
   width: 2.5rem;
@@ -227,6 +227,7 @@ c .chatTitle {
 @media (max-width: 900px) {
   .chatApp {
     flex-direction: column;
+    padding-top: 3rem;
   }
 
   .chatList {
@@ -252,17 +253,20 @@ c .chatTitle {
 
   .chatTitle {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin-top: 1rem;
   }
 
   .chatTitle h3 {
-    padding-left: 1rem;
+    margin-right: 2rem;
     flex-grow: 1;
+    text-align: center;
   }
 
   .menu {
-    display: block;
-    top: 1rem;
-    right: 1rem;
     font-size: 2rem;
     color: #f90784;
     cursor: pointer;
