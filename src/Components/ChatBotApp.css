@@ -278,7 +278,7 @@ c .chatTitle {
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 902px) {
   .chatTitle i.menu,
   .xMobile {
     display: none;
