@@ -21,12 +21,7 @@ const ChatBotApp = ({
   const emojiPickerRef = useRef(null);
   const chatWindowRef = useRef(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
-
-  useEffect(() => {
-    if (!activeChat && chats.length > 0) {
-      setActiveChat(chats[0].id);
-    }
-  }, [activeChat, chats, setActiveChat]);
+  const hasMounted = useRef(false);
 
   const handleScroll = () => {
     const bottom =
@@ -44,17 +39,66 @@ const ChatBotApp = ({
     };
   }, []);
 
-  // useEffect(() => {
-  //   const activeChatObj = chats.find((chat) => chat.id === activeChat);
-  //   setMessages(activeChatObj ? activeChatObj.messages : []);
-  // }, [activeChat, chats]);
-
   useEffect(() => {
     const activeChatObj = chats.find((chat) => chat.id === activeChat);
     if (activeChatObj) {
       setMessages(activeChatObj.messages);
     }
   }, [activeChat, chats]);
+
+  useEffect(() => {
+    if (!hasMounted.current && chats.length > 0) {
+      const lastChat = chats.reduce((latest, current) => {
+        const lastMessageTimeLatest = new Date(
+          latest.messages[latest.messages.length - 1]?.timestamp
+        ).getTime();
+        const lastMessageTimeCurrent = new Date(
+          current.messages[current.messages.length - 1]?.timestamp
+        ).getTime();
+        return lastMessageTimeLatest > lastMessageTimeCurrent
+          ? latest
+          : current;
+      });
+      setActiveChat(lastChat.id);
+      hasMounted.current = true;
+    }
+  }, [chats, setActiveChat]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(e.target) &&
+        !e.target.closest(".emoji")
+      ) {
+        setShowEmojiPicker(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const handleEmojiSelect = (emoji) => {
+    const input = document.querySelector(".msgInput");
+    const cursorPos = input.selectionStart;
+    const textBeforeCursor = inputValue.slice(0, cursorPos);
+    const textAfterCursor = inputValue.slice(cursorPos);
+
+    const newText = textBeforeCursor + emoji.native + textAfterCursor;
+    setInputValue(newText);
+
+    setTimeout(() => {
+      input.selectionStart = cursorPos + emoji.native.length;
+      input.selectionEnd = cursorPos + emoji.native.length;
+    }, 0);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   const sendMessage = async () => {
     if (inputValue.trim() === "") return;
