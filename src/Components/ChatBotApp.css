@@ -7,6 +7,7 @@
   height: 100vh;
   display: flex;
   overflow: hidden;
+  padding-top: 2rem;
   background: linear-gradient(135deg, #073260 20%, #030b17 100%);
 }
 
@@ -228,7 +229,7 @@ h5 {
 @media (max-width: 900px) {
   .chatApp {
     flex-direction: column;
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
   }
 
   .chatList {
