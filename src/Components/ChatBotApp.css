@@ -110,7 +110,6 @@ h5 {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  /* right: calc((100vw - 1000px) / 2 + 2rem); */
   z-index: 10;
   width: 3rem;
   height: 3rem;
@@ -118,7 +117,7 @@ h5 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s ease;
   cursor: pointer;
-  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
   color: #f90784;
 }
 
@@ -231,7 +230,10 @@ h5 {
   }
 
   .home {
-    right: 0.5rem;
+    position: fixed;
+    top: 3.8rem;
+    z-index: 10;
+    right: 0.8rem;
   }
 }
 
