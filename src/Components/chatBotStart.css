@@ -10,7 +10,7 @@
 
 .startButton {
   width: clamp(15rem, 20vw, 20rem);
-  height: clamp(3rem, 8vh, 5rem);
+  height: clamp(4rem, 8vh, 6rem);
   font-size: 2rem;
   background-color: rgba(21, 21, 232, 0.779);
   border: none;
@@ -28,8 +28,8 @@
   margin-top: 3rem;
 }
 
-.startButton:active {
-  transform: scale(0.95);
+.startButton:hover {
+  transform: scale(1.1);
 }
 
 .botImage {

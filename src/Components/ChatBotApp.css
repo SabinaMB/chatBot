@@ -7,8 +7,8 @@
   height: 100vh;
   display: flex;
   overflow: hidden;
-  padding-top: 2rem;
   background: linear-gradient(135deg, #073260 20%, #030b17 100%);
+  position: relative;
 }
 
 .chatList {
@@ -16,10 +16,10 @@
   height: 100%;
   background-color: #030b17;
   overflow: hidden;
-  padding: clamp(0.3rem, 1vw, 1rem);
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  row-gap: clamp(0.5rem, 1vw, 1rem);
+  row-gap: 1.5rem;
   color: #d3d3d3;
   transition: transform 0.4s ease;
   overflow-y: auto;
@@ -33,9 +33,8 @@
   flex-direction: column;
   flex-grow: 1;
   flex-basis: auto;
-  padding: clamp(0.3rem, 1vw, 1rem);
-  margin-top: 1rem;
-  row-gap: clamp(0.5rem, 1vw, 1rem);
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  row-gap: 1.5rem;
   overflow-y: auto;
 }
 
@@ -45,7 +44,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-  margin-top: 1rem;
 }
 
 .chatListItem {
@@ -63,6 +61,7 @@
   margin-left: clamp(0.2rem, 1.5vw, 1rem);
   color: #f90784;
   cursor: pointer;
+  transform: scale(1.5);
 }
 
 .chatListItem.active {
@@ -73,6 +72,7 @@
   margin-left: clamp(0.2rem, 1vh, 1rem);
   color: #f90784;
   cursor: pointer;
+  transform: scale(1.5);
 }
 
 h3 {
@@ -107,17 +107,17 @@ h5 {
 }
 
 .home {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  position: fixed;
+  top: 2rem;
+  right: calc((100vw - 1000px) / 2 + 2rem);
   z-index: 10;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s ease;
   cursor: pointer;
-  font-size: clamp(1rem, 1vw, 1.2rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
   color: #f90784;
 }
 
@@ -229,7 +229,6 @@ h5 {
 @media (max-width: 900px) {
   .chatApp {
     flex-direction: column;
-    /* padding-top: 3rem; */
   }
 
   .chatList {
@@ -247,6 +246,7 @@ h5 {
     margin-left: clamp(0.2rem, 1.5vw, 1rem);
     color: #f90784;
     cursor: pointer;
+    transform: scale(1.5);
   }
 
   .chatList.show {
@@ -269,7 +269,7 @@ h5 {
   }
 
   .menu {
-    font-size: 2rem;
+    font-size: 3rem;
     color: #f90784;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -284,7 +284,8 @@ h5 {
   }
 
   .home {
-    top: 1.5rem;
+    top: 3.5rem;
+    right: 2rem;
   }
 }
 
