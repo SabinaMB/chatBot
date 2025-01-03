@@ -81,6 +81,10 @@ const ChatBotApp = ({
     };
   }, []);
 
+  // useEffect(() => {
+  //   console.log(import.meta.env.VITE_OPENAI_API_KEY);
+  // }, []);
+
   const handleEmojiSelect = (emoji) => {
     const input = document.querySelector(".msgInput");
     const cursorPos = input.selectionStart;
