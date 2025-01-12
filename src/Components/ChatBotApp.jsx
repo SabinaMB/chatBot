@@ -202,7 +202,7 @@ const ChatBotApp = ({
             <h4>Chat List</h4>
             <i
               className="bx bx-edit-alt newChat"
-              onClick={() => onNewChat("New Chat")}
+              onClick={() => onNewChat("")}
             ></i>
             <i
               className="bx bx-x-circle xMobile"
