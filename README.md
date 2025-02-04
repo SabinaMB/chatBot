@@ -15,8 +15,7 @@ A sleek and intuitive chatbot application designed with a minimalistic approach 
 - **OpenAI API** (for generating responses)
 - **@emoji-mart/react** (for easy emoji integration)
 - **uuid** (to generate unique identifiers for tracking user sessions)
-
-**Bonus**: The **StartPage image** was created using AI tools, adding a unique touch to the project.
+- The **StartPage image** was created using AI tools, adding a unique touch to the project.
 
 ## Live Application:
 Check out the live demo here:  
